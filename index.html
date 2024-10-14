@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <titleHüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</title>
+    <title>Hüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -30,25 +30,14 @@
 
         .gallery img {
             flex: 0 0 auto; /* Resimleri yan yana sıralar */
+            width: 100vw; /* Ekranın tamamını kaplasın */
             height: auto; /* Yükseklik otomatik ayarla */
-            width: 100%; /* Genişliği ekranın tamamını kaplasın */
             max-height: 100vh; /* Ekranın yüksekliğini aşmaması için maksimum yükseklik */
             margin-right: 10px; /* Sağda boşluk */
             cursor: pointer;
-            transition: transform 0.3s;
             scroll-snap-align: start; /* Kaydırma için hizalama */
         }
-        /* Medya sorguları - küçük ekranlar için */
-        @media (max-width: 768px) {
-            .gallery img {
-                height: 200px; /* Tabletler için daha küçük boyutlar */
-            }
-        }
 
-        @media (max-width: 480px) {
-            .gallery img {
-                height: 150px; /* Telefonlar için daha küçük boyutlar */
-            }
         /* Lightbox yapısı */
         .lightbox {
             display: none; /* Başlangıçta gizli */
