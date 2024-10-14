@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
     <title>QR Code için Yatay Görsel Galeri</title>
     <style>
         body {
@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            overflow-x: hidden;
         }
 
         h1 {
@@ -29,7 +30,7 @@
         .gallery img {
             display: inline-block;
             width: auto;
-            height: 300px; /* Sabit bir yükseklik belirledik */
+            height: 300px; /* Sabit bir yükseklik */
             margin-right: 10px;
             cursor: pointer;
             transition: transform 0.3s;
@@ -39,20 +40,44 @@
             transform: scale(1.05); /* Hover'da küçük bir büyütme efekti */
         }
 
-        /* Medya sorguları - küçük ekranlar için */
+        /* Medya sorguları - küçük ekranlar (tablet, telefon) için */
         @media (max-width: 768px) {
             .gallery img {
                 height: 200px; /* Tabletler için daha küçük boyutlar */
             }
         }
 
-        @media (max-width: 480px) {
+        /* Telefonlar için yatay mod */
+        @media (max-width: 480px) and (orientation: landscape) {
             .gallery img {
-                height: 150px; /* Telefonlar için daha küçük boyutlar */
+                height: 150px; /* Telefonlar için yatay modda daha küçük boyutlar */
             }
 
             h1 {
                 font-size: 1.5em;
+            }
+        }
+
+        /* Dikey modda uyarı mesajı göster */
+        @media (max-width: 480px) and (orientation: portrait) {
+            body::before {
+                content: "Bu sayfa yatay modda görüntülenmek için optimize edilmiştir. Lütfen cihazınızı yatay konuma getirin.";
+                display: block;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 1.2em;
+                padding: 20px;
+                background-color: #fff;
+                border: 2px solid #333;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                text-align: center;
+                width: 90%;
+            }
+            .gallery-container {
+                display: none;
             }
         }
     </style>
