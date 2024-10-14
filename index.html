@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</title>
+    <title>QR Code için Görsel Galeri</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,20 +29,15 @@
             margin: 0 auto;
         }
 
-        .gallery img {
-            width: 100%;
-            height: auto;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
+            .gallery img {
+                width: 100%;
+                height: auto;
+                cursor: pointer;
+                transition: transform 0.3s;
+            }
 
-        .gallery img:hover {
-            transform: scale(1.1);
-        }
-
-        /* Lightbox stili 
         .lightbox {
-            display: none;
+            display: none; /* Başlangıçta gizli */
             position: fixed;
             z-index: 999;
             left: 0;
@@ -54,32 +49,10 @@
             align-items: center;
         }
 
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox:target {
-            display: flex;
-        }
-        */
-        
-        /* Medya sorguları - küçük ekranlar için */
-        @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr); /* Tablet için 2 sütun */
+            .lightbox img {
+                max-width: 90%;
+                max-height: 90%;
             }
-        }
-
-        @media (max-width: 480px) {
-            .gallery {
-                grid-template-columns: repeat(1, 1fr); /* Telefon için 1 sütun */
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-        }
     </style>
 </head>
 <body>
@@ -87,47 +60,35 @@
     <h1>Hüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</h1>
 
     <div class="gallery">
-        <a href="#img1"><img src="1.png" alt="Görsel 1"></a>
-        <a href="#img2"><img src="2.png" alt="Görsel 2"></a>
-        <a href="#img3"><img src="3.png" alt="Görsel 3"></a>
-        <a href="#img4"><img src="4.png" alt="Görsel 4"></a>
-        <a href="#img5"><img src="5.png" alt="Görsel 5"></a>
-        <a href="#img6"><img src="6.png" alt="Görsel 6"></a>
-        <a href="#img7"><img src="7.png" alt="Görsel 7"></a>
-        <a href="#img8"><img src="8.png" alt="Görsel 8"></a>
-        <a href="#img9"><img src="9.png" alt="Görsel 9"></a>
+        <img src="1.png" alt="Görsel 1" onclick="openLightbox(this)">
+        <img src="2.png" alt="Görsel 2" onclick="openLightbox(this)">
+        <img src="3.png" alt="Görsel 3" onclick="openLightbox(this)">
+        <img src="4.png" alt="Görsel 4" onclick="openLightbox(this)">
+        <img src="5.png" alt="Görsel 5" onclick="openLightbox(this)">
+        <img src="6.png" alt="Görsel 6" onclick="openLightbox(this)">
+        <img src="7.png" alt="Görsel 7" onclick="openLightbox(this)">
+        <img src="8.png" alt="Görsel 8" onclick="openLightbox(this)">
+        <img src="9.png" alt="Görsel 9" onclick="openLightbox(this)">
     </div>
 
-    
-       <!-- Lightbox Kısmı -->
-    <!--
-    <div id="img1" class="lightbox">
-        <a href="#"><img src="1.png" alt="Görsel 1"></a>
+    <!-- Lightbox Kısmı -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Büyütülmüş Görsel">
     </div>
-    <div id="img2" class="lightbox">
-        <a href="#"><img src="2.png" alt="Görsel 2"></a>
-    </div>
-    <div id="img3" class="lightbox">
-        <a href="#"><img src="3.png" alt="Görsel 3"></a>
-    </div>
-    <div id="img4" class="lightbox">
-        <a href="#"><img src="4.png" alt="Görsel 4"></a>
-    </div>
-    <div id="img5" class="lightbox">
-        <a href="#"><img src="5.png" alt="Görsel 5"></a>
-    </div>
-    <div id="img6" class="lightbox">
-        <a href="#"><img src="6.png" alt="Görsel 6"></a>
-    </div>
-    <div id="img7" class="lightbox">
-        <a href="#"><img src="7.png" alt="Görsel 7"></a>
-    </div>
-    <div id="img8" class="lightbox">
-        <a href="#"><img src="8.png" alt="Görsel 8"></a>
-    </div>
-    <div id="img9" class="lightbox">
-        <a href="#"><img src="9.png" alt="Görsel 9"></a>
-    </div>
--->
+
+    <script>
+        function openLightbox(img) {
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            lightboxImg.src = img.src; // Tıklanan görselin kaynağını al
+            lightbox.style.display = "flex"; // Lightbox'ı göster
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById("lightbox");
+            lightbox.style.display = "none"; // Lightbox'ı gizle
+        }
+    </script>
+
 </body>
 </html>
