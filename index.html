@@ -38,7 +38,17 @@
             transition: transform 0.3s;
             scroll-snap-align: start; /* Kaydırma için hizalama */
         }
+        /* Medya sorguları - küçük ekranlar için */
+        @media (max-width: 768px) {
+            .gallery img {
+                height: 200px; /* Tabletler için daha küçük boyutlar */
+            }
+        }
 
+        @media (max-width: 480px) {
+            .gallery img {
+                height: 150px; /* Telefonlar için daha küçük boyutlar */
+            }
         /* Lightbox yapısı */
         .lightbox {
             display: none; /* Başlangıçta gizli */
