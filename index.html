@@ -31,13 +31,14 @@
         .gallery img {
             flex: 0 0 auto; /* Resimleri yan yana sıralar */
             height: 100vh; /* Görseller tam ekran yüksekliği */
+            width: auto; /* Genişliği otomatik ayarla */
             margin-right: 10px; /* Sağda boşluk */
             cursor: pointer;
             transition: transform 0.3s;
             scroll-snap-align: start; /* Kaydırma için hizalama */
         }
 
-        /* Tıklama ile büyütme için lightbox stili */
+        /* Lightbox yapısı */
         .lightbox {
             display: none; /* Başlangıçta gizli */
             position: fixed; /* Sabit konum */
@@ -55,6 +56,23 @@
             max-width: 90%; /* Maksimum genişlik */
             max-height: 90%; /* Maksimum yükseklik */
             cursor: zoom-out; /* Büyütme efekti */
+        }
+
+        /* Dikey modda tam ekran */
+        @media (max-width: 768px) {
+            .gallery img {
+                height: 100vh; /* Tabletler için tam ekran yüksekliği */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery img {
+                height: 100vh; /* Telefonlar için tam ekran yüksekliği */
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
         }
     </style>
 </head>
