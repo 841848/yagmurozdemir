@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code için Görsel Galeri</title>
+    <title>QR Code için Yatay Görsel Galeri</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
             background-color: #f4f4f4;
             margin: 0;
             padding: 0;
+            text-align: center;
         }
 
         h1 {
@@ -19,61 +19,36 @@
             color: #333;
         }
 
-        /* Görsel galerisi */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
+        /* Yatay görsel galerisi */
+        .gallery-container {
+            overflow-x: auto;
+            white-space: nowrap;
             padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
         }
 
         .gallery img {
-            width: 100%;
-            height: auto;
+            display: inline-block;
+            width: auto;
+            height: 300px; /* Sabit bir yükseklik belirledik */
+            margin-right: 10px;
             cursor: pointer;
             transition: transform 0.3s;
         }
 
         .gallery img:hover {
-            transform: scale(1.1);
+            transform: scale(1.05); /* Hover'da küçük bir büyütme efekti */
         }
 
-        /* Lightbox stili 
-        .lightbox {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90%;
-        }
-
-        .lightbox:target {
-            display: flex;
-        }
-        */
-        
         /* Medya sorguları - küçük ekranlar için */
         @media (max-width: 768px) {
-            .gallery {
-                grid-template-columns: repeat(2, 1fr); /* Tablet için 2 sütun */
+            .gallery img {
+                height: 200px; /* Tabletler için daha küçük boyutlar */
             }
         }
 
         @media (max-width: 480px) {
-            .gallery {
-                grid-template-columns: repeat(1, 1fr); /* Telefon için 1 sütun */
+            .gallery img {
+                height: 150px; /* Telefonlar için daha küçük boyutlar */
             }
 
             h1 {
@@ -86,48 +61,19 @@
 
     <h1>Hüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</h1>
 
-    <div class="gallery">
-        <a href="#img1"><img src="1.png" alt="Görsel 1"></a>
-        <a href="#img2"><img src="2.png" alt="Görsel 2"></a>
-        <a href="#img3"><img src="3.png" alt="Görsel 3"></a>
-        <a href="#img4"><img src="4.png" alt="Görsel 4"></a>
-        <a href="#img5"><img src="5.png" alt="Görsel 5"></a>
-        <a href="#img6"><img src="6.png" alt="Görsel 6"></a>
-        <a href="#img7"><img src="7.png" alt="Görsel 7"></a>
-        <a href="#img8"><img src="8.png" alt="Görsel 8"></a>
-        <a href="#img9"><img src="9.png" alt="Görsel 9"></a>
+    <div class="gallery-container">
+        <div class="gallery">
+            <img src="9.png" alt="Görsel 1">
+            <img src="8.png" alt="Görsel 2">
+            <img src="1.png" alt="Görsel 3">
+            <img src="3.png" alt="Görsel 4">
+            <img src="7.png" alt="Görsel 5">
+            <img src="4.png" alt="Görsel 6">
+            <img src="6.png" alt="Görsel 7">
+            <img src="2.png" alt="Görsel 8">
+            <img src="5.png" alt="Görsel 9">
+        </div>
     </div>
 
-    
-       <!-- Lightbox Kısmı -->
-    <!--
-    <div id="img1" class="lightbox">
-        <a href="#"><img src="1.png" alt="Görsel 1"></a>
-    </div>
-    <div id="img2" class="lightbox">
-        <a href="#"><img src="2.png" alt="Görsel 2"></a>
-    </div>
-    <div id="img3" class="lightbox">
-        <a href="#"><img src="3.png" alt="Görsel 3"></a>
-    </div>
-    <div id="img4" class="lightbox">
-        <a href="#"><img src="4.png" alt="Görsel 4"></a>
-    </div>
-    <div id="img5" class="lightbox">
-        <a href="#"><img src="5.png" alt="Görsel 5"></a>
-    </div>
-    <div id="img6" class="lightbox">
-        <a href="#"><img src="6.png" alt="Görsel 6"></a>
-    </div>
-    <div id="img7" class="lightbox">
-        <a href="#"><img src="7.png" alt="Görsel 7"></a>
-    </div>
-    <div id="img8" class="lightbox">
-        <a href="#"><img src="8.png" alt="Görsel 8"></a>
-    </div>
-    <div id="img9" class="lightbox">
-        <a href="#"><img src="9.png" alt="Görsel 9"></a>
-    </div>
--->
 </body>
 </html>
