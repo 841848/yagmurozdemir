@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</title>
+    <title>QR Code için Yatay Görsel Galeri</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -24,6 +24,8 @@
         .gallery-container {
             display: flex; /* Flexbox ile yatay sıralama */
             overflow-x: auto; /* Yatay kaydırma */
+            height: 100vh;
+            width: 100vw;
             padding: 20px;
             scroll-snap-type: x mandatory; /* Kaydırma için snap efekti */
         }
@@ -31,12 +33,14 @@
         .gallery img {
             flex: 0 0 auto; /* Resimleri yan yana sıralar */
             width: 100vw; /* Ekranın tamamını kaplasın */
-            height: 100vh; /* Ekranın tamamını kaplasın */
-            object-fit: cover; /* Görsellerin boyutunu koruyarak kapsar */
+            height: auto; /* Yükseklik otomatik ayarla */
+            max-height: 100vh; /* Ekranın yüksekliğini aşmaması için maksimum yükseklik */
+            object-fit: contain; /* Görsellerin orantılı bir şekilde kapsanmasını sağlar */
             margin-right: 10px; /* Sağda boşluk */
             cursor: pointer;
             scroll-snap-align: start; /* Kaydırma için hizalama */
         }
+
 
         /* Lightbox yapısı */
         .lightbox {
@@ -61,7 +65,7 @@
 </head>
 <body>
 
-    <h1>Hüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</h1>
+    <h1>QR Code için Yatay Görsel Galeri</h1>
 
     <div class="gallery-container">
         <img src="9.png" alt="Görsel 1" onclick="openLightbox(this)">
