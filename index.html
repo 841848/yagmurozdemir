@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code için Yatay Görsel Galeri</title>
+    <title>Hüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
             margin: 0;
             padding: 0;
             text-align: center;
+            background-color: #f4f4f4;
             overflow-x: hidden;
         }
 
@@ -22,39 +22,39 @@
 
         /* Yatay görsel galerisi */
         .gallery-container {
-            overflow-x: auto;
-            white-space: nowrap; /* Görsellerin yan yana sıralanmasını sağlar */
+            display: flex; /* Flexbox ile yatay sıralama */
+            overflow-x: auto; /* Yatay kaydırma */
             padding: 20px;
+            scroll-snap-type: x mandatory; /* Kaydırma için snap efekti */
         }
 
         .gallery img {
-            display: inline-block;
-            width: auto;
-            height: 300px; /* Sabit bir yükseklik */
-            margin-right: 10px;
+            flex: 0 0 auto; /* Resimleri yan yana sıralar */
+            height: 100vh; /* Görseller tam ekran yüksekliği */
+            margin-right: 10px; /* Sağda boşluk */
             cursor: pointer;
             transition: transform 0.3s;
+            scroll-snap-align: start; /* Kaydırma için hizalama */
         }
 
-        .gallery img:hover {
-            transform: scale(1.05); /* Hover'da küçük bir büyütme efekti */
+        /* Tıklama ile büyütme için lightbox stili */
+        .lightbox {
+            display: none; /* Başlangıçta gizli */
+            position: fixed; /* Sabit konum */
+            top: 0;
+            left: 0;
+            width: 100vw; /* Tam ekran genişliği */
+            height: 100vh; /* Tam ekran yüksekliği */
+            background-color: rgba(0, 0, 0, 0.8); /* Koyu arka plan */
+            justify-content: center; /* Ortada hizalama */
+            align-items: center; /* Ortada hizalama */
+            z-index: 1000; /* Üstte görünmesi için */
         }
 
-        /* Tablet ve telefonlar için görsel yüksekliği küçültme */
-        @media (max-width: 768px) {
-            .gallery img {
-                height: 200px; /* Tabletler için daha küçük boyutlar */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .gallery img {
-                height: 150px; /* Telefonlar için daha küçük boyutlar */
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
+        .lightbox img {
+            max-width: 90%; /* Maksimum genişlik */
+            max-height: 90%; /* Maksimum yükseklik */
+            cursor: zoom-out; /* Büyütme efekti */
         }
     </style>
 </head>
@@ -63,18 +63,35 @@
     <h1>Hüdavendigar Yapıları: Çanakkale’de I. Murad Döneminde Yaptırılan Yapılar</h1>
 
     <div class="gallery-container">
-        <div class="gallery">
-            <img src="9.png" alt="Görsel 1">
-            <img src="8.png" alt="Görsel 2">
-            <img src="1.png" alt="Görsel 3">
-            <img src="3.png" alt="Görsel 4">
-            <img src="7.png" alt="Görsel 5">
-            <img src="4.png" alt="Görsel 6">
-            <img src="6.png" alt="Görsel 7">
-            <img src="2.png" alt="Görsel 8">
-            <img src="5.png" alt="Görsel 9">
-        </div>
+        <img src="9.png" alt="Görsel 1" onclick="openLightbox(this)">
+        <img src="8.png" alt="Görsel 2" onclick="openLightbox(this)">
+        <img src="1.png" alt="Görsel 3" onclick="openLightbox(this)">
+        <img src="3.png" alt="Görsel 4" onclick="openLightbox(this)">
+        <img src="7.png" alt="Görsel 5" onclick="openLightbox(this)">
+        <img src="4.png" alt="Görsel 6" onclick="openLightbox(this)">
+        <img src="6.png" alt="Görsel 7" onclick="openLightbox(this)">
+        <img src="2.png" alt="Görsel 8" onclick="openLightbox(this)">
+        <img src="5.png" alt="Görsel 9" onclick="openLightbox(this)">
     </div>
+
+    <!-- Lightbox yapısı -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <img id="lightbox-img" src="" alt="Büyütülmüş Görsel">
+    </div>
+
+    <script>
+        function openLightbox(img) {
+            const lightbox = document.getElementById("lightbox");
+            const lightboxImg = document.getElementById("lightbox-img");
+            lightboxImg.src = img.src; // Tıklanan görselin kaynağını al
+            lightbox.style.display = "flex"; // Lightbox'ı göster
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById("lightbox");
+            lightbox.style.display = "none"; // Lightbox'ı gizle
+        }
+    </script>
 
 </body>
 </html>
